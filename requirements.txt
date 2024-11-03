@@ -2,3 +2,4 @@ transformers==4.46.0
 uvicorn
 fastapi
 torch
+sentencepiece==0.2.0

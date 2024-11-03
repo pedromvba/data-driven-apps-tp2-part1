@@ -19,7 +19,7 @@ def generate_text(message:str) -> dict:
 
 @router.post('/textgen/')
 async def autocomplete(body:TextGeneratorModel) -> ChatReponseModel:
-    response = generate_text(body.input_text)
+    response = generate_text(body.message)
     return ChatReponseModel(bot_message=response[0]['generated_text'])
     
 

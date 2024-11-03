@@ -1,24 +1,20 @@
 #import json
 from fastapi import APIRouter
 from transformers import pipeline
-#from models.textGeneratorModel import TextGeneratorModel, ChatReponseModel
+from models.textTranslatorModel import TranslatorModel, ChatReponseModel
 import torch
 
 router = APIRouter()
 
+# if device is uncommented, it goes on the pipeline method as an argument
+#device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
+
 def generate_text(message:str) -> dict:
-    generator = pipeline('text-generation', model='gpt2', max_length=30, num_return_sequences=1)
+    generator = pipeline(model='Helsinki-NLP/opus-mt-en-fr')
     text = generator(message)
     return text
 
-# def generate_text(message:dict) -> dict:
-#     generator = pipeline('text-generation', model='gpt2')
-#     text = generator(message['text'])
-#     return text
-
-# @router.post('/textgen/')
-# async def autocomplete(body:TextGeneratorModel) -> ChatReponseModel:
-#     response = generate_text(body.input_text)
-#     return ChatReponseModel(bot_message=response[0]['generated_text'])
-
-#@router.post('/translator/')
+@router.post('/en-fr-translator/')
+async def translator(body: TranslatorModel) -> ChatReponseModel:
+    response = generate_text(body.message)
+    return ChatReponseModel(bot_message=response[0]['translation_text'])

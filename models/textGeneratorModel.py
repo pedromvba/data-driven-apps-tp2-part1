@@ -1,10 +1,10 @@
 from pydantic import BaseModel
 
 class TextGeneratorModel(BaseModel):
-    input_text: str
+    message: str
 
 # class TextGeneratorModel(BaseModel):
-#     input_text: dict
+#     message: dict
 
 class ChatReponseModel(BaseModel):
     bot_message: str

@@ -10,10 +10,11 @@ app = FastAPI()
 
 # calling endpoints and methods
 app.include_router(text_generator_router)
+app.include_router(text_translator_router)
 # app.include_router(user_router)
 
 
 # root route
 @app.get('/')
 def root():
-    return {'message':'Hello - Services avaiables: text generator @/textgen/ and text translator @/translator/'}
+    return {'message':'Hello - Services avaiables: text generator @/textgen/ and text translator @en-fr-translator/'}
