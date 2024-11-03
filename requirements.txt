@@ -1,5 +1,5 @@
 transformers==4.46.0
-uvicorn
-fastapi
-torch
+uvicorn==0.32.0
+fastapi==0.115.4
+torch==2.5.1
 sentencepiece==0.2.0
