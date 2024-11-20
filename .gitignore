@@ -340,6 +340,5 @@ pyrightconfig.json
 .ionide
 
 ### Other Documents ###
-/entrega/
 
 # End of https://www.toptal.com/developers/gitignore/api/python,macos,pycharm,visualstudiocode
